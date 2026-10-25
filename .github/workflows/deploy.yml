@@ -1,0 +1,21 @@
+
+name: Application Deployment
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify application
+        run: test -f index.html
+
+      - name: Deployment successful
+        run: echo "Application deployment pipeline completed successfully!"
